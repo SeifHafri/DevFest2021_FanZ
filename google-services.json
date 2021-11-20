@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "410720217426",
+    "project_id": "kidq-b4849",
+    "storage_bucket": "kidq-b4849.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410720217426:android:abc019fb281174a50b328b",
+        "android_client_info": {
+          "package_name": "com.FanZ.KidQ"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410720217426-4dvcmr5eoqph624ofg2nvn1qfhspnup9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDosw1EmgJPBe6-D5KLkb-9sv2fVk0FbDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410720217426-4dvcmr5eoqph624ofg2nvn1qfhspnup9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "410720217426-opt9i6iu2tmpb8j3gcq5kalq528tnhvm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.FanZ.KidQ"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
