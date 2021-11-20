@@ -1,5 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+
 import {
   TouchableOpacity,
   Button,
@@ -11,10 +12,12 @@ import {
 // import LinearGradient from "react-native-linear-gradient";
 import { LinearGradient } from "expo-linear-gradient";
 import { TextInput } from "react-native";
+import Switch from "expo-dark-mode-switch";
 var a = "8%";
 // function showimg() {
 
 //   return 0;
+
 // }
 
 const Parental_Control = ({ navigation }) => {
@@ -28,6 +31,7 @@ const Parental_Control = ({ navigation }) => {
         colors={["#4D7A91", "#3F5773"]}
       >
         <View style={styles.spacing1}></View>
+
         <View style={styles.header}>
           <Image
             resizeMode="contain"
@@ -36,10 +40,11 @@ const Parental_Control = ({ navigation }) => {
           ></Image>
           <Image
             resizeMode="contain"
-            source={require("../../assets/l.png")}
+            source={require("../../assets/toggle.png")}
             style={styles.ja}
           ></Image>
         </View>
+
         <View style={styles.spacing2}></View>
 
         <Text style={styles.title}>Parental Cotrol</Text>
@@ -80,6 +85,10 @@ const Parental_Control = ({ navigation }) => {
           style={styles.back}
           onPress={() => navigation.navigate("LG2", { name: "LG2" })}
         ></TouchableOpacity>
+        <TouchableOpacity
+          style={styles.desac}
+          onPress={() => navigation.navigate("Off", { name: "Off" })}
+        ></TouchableOpacity>
       </LinearGradient>
     </View>
   );
@@ -96,6 +105,7 @@ const styles = StyleSheet.create({
   lefting: {
     width: "8%",
     marginRight: "5%",
+    marginTop: "6%",
   },
   back: {
     height: "8%",
@@ -106,32 +116,21 @@ const styles = StyleSheet.create({
     top: "8%",
     left: "5%",
   },
+  desac: {
+    height: "8%",
+    width: "17%",
+    backgroundColor: "transparent",
+    position: "absolute",
+    zIndex: 200,
+    top: "10%",
+    left: "75%",
+  },
   ja: {
-    width: "6%",
+    width: "16%",
+    marginTop: "5%",
     marginRight: "5%",
   },
-  spacing1: {
-    width: "10%",
-    height: "3%",
-    flex: 0.13,
-    marginTop: "5%",
-    marginLeft: "5%",
-    borderRadius: 25,
 
-    // alignItems: "center",
-    // justifyContent: "center",
-  },
-  spacing2: {
-    width: "10%",
-    height: "10%",
-    flex: 0.03,
-    marginTop: "5%",
-    marginLeft: "5%",
-    borderRadius: 25,
-
-    // alignItems: "center",
-    // justifyContent: "center",
-  },
   appButtonText: {
     fontWeight: "bold",
     fontSize: 18,
@@ -179,7 +178,7 @@ const styles = StyleSheet.create({
     paddingLeft: "5%",
   },
   title: {
-    marginTop: "2%",
+    marginTop: "-60%",
     marginLeft: "7%",
     fontSize: 35,
     fontWeight: "bold",
@@ -188,7 +187,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     width: "90%",
-    marginTop: "0%",
+    marginTop: "-45%",
     marginLeft: "5%",
     borderRadius: 15,
     paddingLeft: 15,

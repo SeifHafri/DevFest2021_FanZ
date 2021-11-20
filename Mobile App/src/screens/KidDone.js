@@ -36,8 +36,8 @@ const KidDone = ({ navigation }) => {
         <TouchableOpacity
           style={styles.bttn}
           onPress={() =>
-            navigation.navigate("LG", {
-              name: "LG",
+            navigation.navigate("Parental_Control", {
+              name: "Parental_Control",
             })
           }
         >

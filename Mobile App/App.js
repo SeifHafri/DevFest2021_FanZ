@@ -17,6 +17,7 @@ import MyKids from "./src/screens/MyKids";
 import Ayhem from "./src/screens/Ayhem";
 import LG from "./src/screens/LG";
 import LG2 from "./src/screens/LG2";
+import Off from "./src/screens/Off";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -84,10 +85,45 @@ registerForPushNotificationsAsync = async () => {
 //   return token;
 // }
 
+// export default useNotifications = () => {
+
+//   useEffect(() => {
+//       registerForPushNotificationsAsync().then((token) => {
+//           setExpoPushToken(token);
+//           alert(token);
+//       });
+
+//       notificationListener.current = Notifications.addNotificationReceivedListener(
+//           (notification) => {
+//               setNotification(notification);
+//               console.log(notification);
+//           }
+//       );
+
+//       responseListener.current = Notifications.addNotificationResponseReceivedListener(
+//           (response) => {
+//               //notification is received OK
+//               console.log("opened");
+
+//               //here I want to navigate to another screen using rootnavigation
+//               navigation.navigate("Account");
+
+//               //alert shows fine
+//               alert("ok");
+//           }
+//       );
+
+//       return () => {
+//           Notifications.removeNotificationSubscription(notificationListener);
+//           Notifications.removeNotificationSubscription(responseListener);
+//       };
+//   }, []);
+// };
+
 export default function App() {
   const notificationListener = useRef();
   const responseListener = useRef();
-
+  const { danger, setDanger } = useState(false);
   useEffect(() => {
     if (Constants.isDevice && Platform.OS !== "web") {
       registerForPushNotificationsAsync().then((token) => {
@@ -101,12 +137,26 @@ export default function App() {
         Notifications.addNotificationResponseReceivedListener((response) =>
           console.log(response)
         );
+      responseListener.current =
+        Notifications.addNotificationResponseReceivedListener((response) => {
+          //notification is received OK
+          console.log("opened");
+          // setDanger(true);
+
+          // navigation.navigate("Danger", { name: "Danger" });
+
+          //here I want to navigate to another screen using rootnavigation
+          // navigation.navigate("Account");
+
+          //alert shows fine
+          // alert("ok");
+        });
       return () => {
         Notifications.removeNotificationSubscription(notificationListener);
         Notifications.removeNotificationSubscription(responseListener);
       };
     }
-  }, []);
+  }, [danger]);
 
   async function registerForPushNotification() {
     const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
@@ -121,6 +171,7 @@ export default function App() {
     token = (await Notifications.getExpoPushTokenAsync()).data;
     return token;
   }
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -137,6 +188,7 @@ export default function App() {
         <Stack.Screen name="Addkid" component={Addkid} />
         <Stack.Screen name="Danger" component={Danger} />
         <Stack.Screen name="KidDone" component={KidDone} />
+        <Stack.Screen name="Off" component={Off} />
         <Stack.Screen name="Parental_Control" component={Parental_Control} />
       </Stack.Navigator>
     </NavigationContainer>
